@@ -1,0 +1,26 @@
+server:
+  port: 9080
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: auth
+        uri: http://10.177.1.179:6081
+        predicates:
+        - Path=/auth/**
+      - id: checkout
+        uri: http://10.177.1.254:7081
+        predicates:
+        - Path=/checkout/**
+      - id: Product
+        uri: http://10.177.1.104:9081
+        predicates:
+        - Path=/product/**
+      - id: Merchant
+        uri: http://10.177.1.104:8081
+        predicates:
+        - Path=/merchant/**
+      - id: search
+        uri: http://10.177.1.254:5081
+        predicates:
+        - Path=/search/**
